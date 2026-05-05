@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{placeins}
+\usepackage{multirow}
+\usepackage{indentfirst}
+\usepackage{float} % Required for the H placement specifier
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\NewDocumentCommand{\gvec}{me{_^}}{\makegvec{#1}{#2}{#3}}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\makegvec}{mmm}
+ {
+  \vec{#1}
+  \IfValueT{#2}{\sb{#2}}
+  \IfValueT{#3}{\sp{\mspace{0\prop_item:Nn \g_gvec_kern_prop {#1} mu}#3}}
+ }
+\prop_new:N \g_gvec_kern_prop
+\prop_gset_from_keyval:Nn \g_gvec_kern_prop
+ {
+  \imath=5,
+  f=3,
+  n=1,
+  o=3,
+ }
+\ExplSyntaxOff
+
+\setlength{\parindent}{0.5in}
+
+
+\title{Understanding the Buck Module}
+\author{Ronan Hughes}
+\date{April 29, 2026}
+\begin{document}
+\maketitle
+\section{Review Of Electricity}
+\subsection{Basics}
+Fundamentally, electricity is the flow of electrons, but what does that actually mean? To understand it, we can think about three core concepts: voltage, resistance, and current. 
+\subsubsection{Voltage}
+Voltage is described as the potential energy difference for a single charge. But that statement is a bit confusing, so lets break it down. We start with Coulomb's Law (\ref{eq:coulombLaw}), which tells us the force between two charges, $q_1$ and $q_2$, given the magnitude of their charge and the distance between them. Intuitively this makes sense the same way we understand gravity. Objects that enact a force on other objects do so related to the distance between them. With gravity, we know that larger planets with more mass have a larger gravitational pull, and the closer you get to that planet, the stronger that pull is. For charges, we can have either a push or a pull (positive or negative), and it is also related to the distance between them. Now, if the force is related to the distance between particles, that means no matter where each particle is, there is always a force between them. If we think about just one particle, and try to describe the force on another particle at any location, we get whats called a field. The field can be described the same way as force, just without the second charge(\ref{Bolztmann's Constant}. 
+
+
+\subsection{Equations}
+\begin{align}
+    k=\frac{1}{4\pi\epsilon_{0}}\label{eq:Bolztmann's Constant}\\
+    \mathbf{F}=k\frac{q_{1}q_{2}\mathbf{\hat{r}}_{21}}{r^2_{21}}\label{eq:coulombLaw}\\
+    \mathbf{E}=\frac{kQ}{r^2}\label{eq:pointChargeField}
+\end{align}
+\section{Buck Module}
+\subsection{Generic Buck Module}
+A generic buck module works as follows.
+
+\end{document}
